@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="container">
+    <div class="main__content">
+      <h3 class="main__title title">Голосарій</h3>
+
+      <div class="main__in">
+        <div class="main__img">
+          <img src="/assets/img/book.svg">
+        </div>
+
+        <nav class="main__list">
+          <ul>
+            <li *ngFor="let link of navMenu">
+              <a routerLink="{{link.route}}">{{link.title}}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+  </div>
+</div>

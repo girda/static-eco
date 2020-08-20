@@ -1,0 +1,43 @@
+.main {
+
+  &__title {
+    margin-left: 250px;
+  }
+
+  &__in {
+    display: flex;
+  }
+
+  &__img {
+    margin-right: 40px;
+  }
+
+  &__text {
+    font-size: 24px;
+    line-height: 1.8;
+    text-indent: 60px;
+    text-align: justify;
+    color: #606060;
+
+    & p {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__feature {
+    width: 600px;
+    margin-left: auto;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.2;
+    text-indent: 60px;
+    text-align: right;
+    color: #606060;
+  }
+
+  &__author {
+    margin-top: 40px;
+    font-size: 16px;
+  }
+}
+

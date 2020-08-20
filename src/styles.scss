@@ -1,0 +1,27 @@
+@import 'app/shared/styles/reset';
+@import 'app/shared/styles/variables';
+@import '~roboto-fontface/css/roboto/roboto-fontface.css';
+
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-color: #eef4ef;
+  line-height: 1.4;
+}
+
+main {
+  margin-bottom: 100px;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 40px;
+  font-size: 34px;
+  font-weight: 500;
+  color: $titleColor;
+  text-align: center;
+  text-transform: uppercase;
+}

@@ -1,0 +1,106 @@
+<header class="header">
+  <div class="container">
+    <div class="header__in">
+
+      <div class="logo">
+        <img src="/assets/img/stateco-logo.png" alt="Logo">
+      </div>
+
+      <div class="header__title">
+        <h1>Cтатистичний екологічний портал</h1>
+        <h2>Cтатистика і дослідження в галузі екології</h2>
+      </div>
+
+    </div>
+
+    <nav class="main-nav">
+      <ul>
+        <li *ngFor="let mainLink of navMenu">
+          <a routerLink="/{{mainLink.route}}">{{mainLink.title}}</a>
+          <ul *ngIf="mainLink.children">
+            <li *ngFor="let innerLink of mainLink.children">
+              <a routerLink="/{{innerLink.route}}">{{innerLink.title}}</a>
+              <ul *ngIf="innerLink.children">
+                <li *ngFor="let lastLink of innerLink.children">
+                  <a routerLink="/{{lastLink.route}}">{{lastLink.title}}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="search">
+      <input type="text" placeholder="Пошук"/>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__in">
+
+      <div class="footer__about footer__item">
+        <h5 class="footer__title">Про нас</h5>
+        <p>Ми пропонуємо загальні та індивідуальні аналітичні послуги в галузі екології</p>
+      </div>
+
+      <nav class="footer__nav footer__item">
+        <h5 class="footer__title">Мапа сайту</h5>
+        <ul>
+          <li *ngFor="let link of navMenu">
+            <a routerLink="{{link.route}}">{{link.title}}</a>
+          </li>
+        </ul>
+      </nav>
+
+      <section class="footer__contact footer__item">
+        <h5 class="footer__title">Контакти</h5>
+        <div class="footer__contact-in">
+          <p
+            class="footer__contact-item"
+            style="background-image: url('/assets/img/house.png')"
+          >
+            вул. Банкова, 11, м. Київ, 01220
+          </p>
+          <a
+            class="footer__contact-item"
+            href="tel:+380677007070"
+            style="background-image: url('/assets/img/house.png')"
+          >
+            +38 (067) 700 70 70
+          </a>
+          <a
+            class="footer__contact-item"
+            href="mailto:info@.com"
+            style="background-image: url('/assets/img/house.png')"
+          >
+            info@.com
+          </a>
+          <a
+            class="footer__contact-item"
+            href="https://google.com"
+            style="background-image: url('/assets/img/house.png')"
+          >
+            www.staticeco.com
+          </a>
+        </div>
+
+      </section>
+
+    </div>
+
+    <section class="footer__copyright">
+      <p>© 2019</p>
+      <p>Green Light Corporate Solutions</p>
+    </section>
+
+  </div>
+</footer>
+
+
