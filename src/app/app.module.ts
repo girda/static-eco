@@ -8,6 +8,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GlossaryPageComponent } from './glossary-page/glossary-page.component';
+import { GlossaryVnrapComponent } from './glossary-page/pages/glossary-vnrap/glossary-vnrap.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { GlossaryPageComponent } from './glossary-page/glossary-page.component';
     MainPageComponent,
     SiteLayoutComponent,
     LoaderComponent,
-    GlossaryPageComponent
+    GlossaryPageComponent,
+    GlossaryVnrapComponent
   ],
   imports: [
     BrowserModule,

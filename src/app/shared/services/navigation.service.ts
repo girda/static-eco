@@ -10,7 +10,7 @@ export class NavigationService {
     {title: 'Головна', route: 'main', children: false},
     {
       title: 'Голосарій', route: 'glossary', children: [
-        {title: 'Викиди небезпечних речовин в атмосферне повітря', route: '', children: false},
+        {title: 'Викиди небезпечних речовин в атмосферне повітря', route: 'glossary-vnrap', children: false},
         {title: 'Утворення відходів та поводження з ними', route: '', children: false},
         {title: 'Витрати на охорону навколишнього природного середовища', route: '', children: false},
         {title: 'Охорона та використання водних ресурсів', route: '', children: false},
