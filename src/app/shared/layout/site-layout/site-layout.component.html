@@ -13,23 +13,7 @@
 
     </div>
 
-    <nav class="main-nav">
-      <ul>
-        <li *ngFor="let mainLink of navMenu">
-          <a routerLink="/{{mainLink.route}}">{{mainLink.title}}</a>
-          <ul *ngIf="mainLink.children">
-            <li *ngFor="let innerLink of mainLink.children">
-              <a routerLink="/{{innerLink.route}}">{{innerLink.title}}</a>
-              <ul *ngIf="innerLink.children">
-                <li *ngFor="let lastLink of innerLink.children">
-                  <a routerLink="/{{lastLink.route}}">{{lastLink.title}}</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
+    <app-menu></app-menu>
 
     <label class="search">
       <input type="text" placeholder="Пошук">
@@ -53,8 +37,8 @@
       <nav class="footer__nav footer__item">
         <h5 class="footer__title">Мапа сайту</h5>
         <ul>
-          <li *ngFor="let link of navMenu">
-            <a routerLink="{{link.route}}">{{link.title}}</a>
+          <li *ngFor="let link of navigationService.menu">
+            <a routerLink="/{{link.route}}">{{link.title}}</a>
           </li>
         </ul>
       </nav>
@@ -87,7 +71,7 @@
             href="https://google.com"
             style="background-image: url('/assets/img/house.png')"
           >
-            www.staticeco.com
+            www.staticEco.com
           </a>
         </div>
 

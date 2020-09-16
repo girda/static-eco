@@ -1,0 +1,37 @@
+@import "../shared/styles/variables";
+
+.main {
+
+  &__in {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__link {
+    width: 48%;
+    margin-bottom: 40px;
+    padding: 30px 30px 240px;
+
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: $black;
+
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: 180px;
+    background-position: bottom 50px center;
+
+    border: 1px solid $black;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px -5px $black;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

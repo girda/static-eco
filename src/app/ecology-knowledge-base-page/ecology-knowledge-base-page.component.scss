@@ -1,0 +1,40 @@
+@import "../shared/styles/variables";
+
+.main {
+
+  &__in {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__box {
+    width: 40%;
+    margin-bottom: 40px;
+
+    h4 {
+      font-size: 20px;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: $black;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.nav {
+
+  &__item {
+    margin-bottom: 5px;
+  }
+
+  &__link {
+    font-size: 18px;
+    color: $black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import "../shared/styles/variables";
+
+.main {
+
+  &__in {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.form {
+  width: 460px;
+  padding: 30px;
+
+  background-color: white;
+  border: 1px solid $green;
+  border-radius: 5px;
+
+  &__field {
+    margin-bottom: 20px;
+
+    input {
+      width: 100%;
+      padding: 15px 30px;
+
+      border: 1px solid $green;
+      border-radius: 5px;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+  }
+}

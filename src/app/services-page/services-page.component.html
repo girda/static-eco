@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="container">
+    <div class="main__content">
+      <h3 class="main__title title">Сервіси</h3>
+
+      <div class="main__in">
+        <ul class="nav">
+          <li
+            *ngFor="let item of navMenu"
+            class="nav__item"
+          >
+            <a
+              class="nav__link"
+              routerLink="/"
+            >
+              <img src="/assets/img/{{item.imgUrl}}" alt="{{item.title}}">
+              <div class="nav__inner">
+                <h4 class="nav__title">{{item.title}}</h4>
+                <p class="nav__description">{{item.description}}</p>
+              </div>
+
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

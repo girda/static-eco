@@ -1,0 +1,96 @@
+@import "../../../styles/variables";
+
+.main-nav {
+  position: relative;
+  padding: 10px 0;
+  z-index: 5;
+
+  & ul {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    text-transform: uppercase;
+
+    & li {
+      padding: 0 5px;
+
+      &:hover > ul {
+        display: flex;
+      }
+
+      & a {
+        display: block;
+        color: $gray;
+        text-decoration: none;
+
+        &:hover {
+          color: $green;
+        }
+      }
+      &:nth-child(8) > ul {
+        right: 0;
+         li > ul {
+           left: -300px;
+         }
+      }
+      & ul {
+        display: none;
+        position: absolute;
+        width: 300px;
+        flex-flow: column nowrap;
+        box-shadow: 0 2px 10px -5px #363636;
+
+        //&:before {
+        //  content: "";
+        //  display: block;
+        //  width: 0;
+        //  height: 0;
+        //  border-style: solid;
+        //  border-width: 0 25px 30px 25px;
+        //  border-color: transparent transparent #ffffff transparent;
+        //  text-align: right;
+        //}
+
+        & li {
+          background-color: white;
+          border-bottom: 1px solid gray;
+          padding: 5px;
+          position: relative;
+
+          & a {
+            color: $green;
+            padding: 10px;
+            &:hover {
+              background-color: #eef4ef;
+            }
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &:hover > ul {
+            display: flex;
+          }
+
+          ul {
+            display: none;
+            position: absolute;
+            width: 300px;
+            left: 300px;
+            top: 0;
+            &:before {
+              content: none;
+            }
+
+            li {
+              &:last-child {
+                border-bottom: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

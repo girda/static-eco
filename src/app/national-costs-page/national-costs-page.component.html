@@ -1,0 +1,71 @@
+<div class="main">
+  <div class="container">
+    <div class="main__in">
+      <div class="main__title title">Витрати</div>
+
+      <div class="center">
+        <div *ngIf="listYears$ | async as yearsList; else loaderYears">
+          <ul
+            *ngIf="yearsList.length !== 0;"
+            class="button-list"
+          >
+            <li
+              *ngFor="let year of yearsList"
+              class="button-list__item"
+            >
+              <button
+                class="button-list__btn btn"
+                (click)="getTable(year.tr_table)"
+                [disabled]="currentTable === year.tr_table"
+              >
+                {{year.tr_period}}
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #loaderYears>
+          <app-loader></app-loader>
+        </ng-template>
+      </div>
+
+      <div *ngIf="agGridIsReady">
+        <div *ngIf="gridService.isReadyTable; else loaderAgGrid">
+          <ag-grid-angular
+            style="width: 100%; height: 600px;"
+            class="ag-theme-alpine"
+            [gridOptions]="gridService.gridOptions"
+          >
+          </ag-grid-angular>
+
+          <div class="center">
+            <div
+              *ngIf="isLoaded; else loader"
+              class="main__btn"
+            >
+              <button
+                (click)="loadMore()"
+                [disabled]="!isLoaded"
+                class="btn"
+              >завантажити ще
+              </button>
+            </div>
+
+            <ng-template #loader>
+              <app-loader></app-loader>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <ng-template #loaderAgGrid>
+        <div class="center">
+          <app-loader></app-loader>
+        </div>
+      </ng-template>
+
+    </div>
+
+  </div>
+</div>
+
+

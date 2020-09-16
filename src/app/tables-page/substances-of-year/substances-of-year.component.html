@@ -1,0 +1,74 @@
+<div class="main">
+  <div class="container">
+    <div class="main__in">
+      <div class="main__breadcrumbs">
+        <a routerLink="{{currentRoute}}" class="main__title title">{{title}}</a>
+        <a class="main__title title arrow-right"></a>
+        <a class="main__title title">{{currentYear}}</a>
+      </div>
+
+      <div class="center">
+        <div *ngIf="substancesList$ | async as substancesList; else loaderSubstances">
+          <ul
+            *ngIf="substancesList.length !== 0;"
+            class="button-list"
+          >
+            <li
+              *ngFor="let substance of substancesList"
+              class="button-list__item"
+            >
+              <button
+                routerLink="{{currentRoute}}/year"
+                class="button-list__btn btn"
+                (click)="getTable(substance.tr_table)"
+                [disabled]="currentTable === substance.tr_table"
+              >
+                {{substance.name}}
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #loaderSubstances>
+          <app-loader></app-loader>
+        </ng-template>
+      </div>
+
+      <div *ngIf="agGridIsReady">
+        <div *ngIf="gridService.isReadyTable; else loaderAgGrid">
+          <ag-grid-angular
+            style="width: 100%; height: 600px;"
+            class="ag-theme-alpine"
+            [gridOptions]="gridService.gridOptions"
+          >
+          </ag-grid-angular>
+
+          <div class="center">
+            <div
+              *ngIf="isLoaded; else loader"
+              class="main__btn"
+            >
+              <button
+                (click)="loadMore()"
+                [disabled]="!isLoaded"
+                class="btn"
+              >завантажити ще
+              </button>
+            </div>
+
+            <ng-template #loader>
+              <app-loader></app-loader>
+            </ng-template>
+          </div>
+        </div>
+        <ng-template #loaderAgGrid>
+          <div class="center">
+            <app-loader></app-loader>
+          </div>
+        </ng-template>
+
+
+      </div>
+    </div>
+  </div>
+</div>

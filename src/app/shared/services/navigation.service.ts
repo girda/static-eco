@@ -11,20 +11,42 @@ export class NavigationService {
     {
       title: 'Голосарій', route: 'glossary', children: [
         {title: 'Викиди небезпечних речовин в атмосферне повітря', route: 'glossary-vnrap', children: false},
-        {title: 'Утворення відходів та поводження з ними', route: '', children: false},
-        {title: 'Витрати на охорону навколишнього природного середовища', route: '', children: false},
+        {title: 'Утворення відходів та поводження з ними', route: 'glossary-uvpn', children: false},
+        {title: 'Витрати на охорону навколишнього природного середовища', route: 'glossary-vonps', children: false},
         {title: 'Охорона та використання водних ресурсів', route: '', children: false},
         {title: 'Природно-заповідний фонд', route: '', children: false},
         {title: 'Внесення добрив та застосування пестицидів', route: '', children: false},
         {title: 'Внесення добрив та застосування пестицидів', route: '', children: false},
         {title: 'Охорона та використання земельних ресурсів', route: '', children: false},
-        {title: 'Мисливське господарство', route: '', children: false}
+        {title: 'Мисливське господарство', route: 'glossary-mg', children: false}
       ]
     },
     {title: 'Профіль', route: '', children: false},
-    {title: 'Cтатистична база данних', route: '', children: false},
     {
-      title: 'База знань з екології', route: '', children: [
+      title: 'Cтатистична база данних', route: '', children: [
+        {
+          title: 'Національна база даних', route: '', children: [
+            {
+              title: 'Первинна база даних', route: '', children: [
+                {title: 'Викиди', route: 'national-emissions', children: false},
+                {title: 'Відходи', route: 'national-waste', children: false},
+                {title: 'Витрати', route: 'national-costs', children: false}
+              ]
+            },
+            {
+              title: 'Регіони', route: '', children: [
+                {title: 'Викиди', route: '', children: false},
+                {title: 'Відходи', route: '', children: false},
+                {title: 'Витрати', route: '', children: false}
+              ]
+            }
+          ]
+        },
+        {title: 'Міжнародна база даних', route: '', children: false}
+      ]
+    },
+    {
+      title: 'База знань з екології', route: 'ecology-knowledge-base', children: [
         {
           title: 'Рубрикатор бази знань', route: '', children: [
             {title: 'Природно-заповідний фонд', route: '', children: false},
@@ -74,14 +96,14 @@ export class NavigationService {
       ]
     },
     {
-      title: 'Наукові дослідження', route: '', children: [
+      title: 'Наукові дослідження', route: 'scientific-research', children: [
         {title: 'Книги, наукові праці', route: '', children: false},
         {title: 'Конференції', route: '', children: false},
         {title: 'Вибіркові статистичні спостереження', route: '', children: false},
         {title: 'Аналітика', route: '', children: false},
       ]
     },
-    {title: 'Сервіси', route: '', children: false},
+    {title: 'Сервіси', route: 'services', children: false},
     {
       title: 'Ринок супутньої продукції', route: '', children: [
         {

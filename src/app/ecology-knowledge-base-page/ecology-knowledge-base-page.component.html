@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="container">
+    <div class="main__content">
+      <h3 class="main__title title">База знань з екології</h3>
+
+      <div class="main__in">
+        <ul class="main__box nav" *ngFor="let item of navMenu">
+          <li><h4>{{item.title}}</h4></li>
+          <li class="nav__item" *ngFor="let link of item.children">
+            <a class="nav__link" routerLink="{{link.route}}">{{link.title}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

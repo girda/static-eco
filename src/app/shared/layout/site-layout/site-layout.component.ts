@@ -8,9 +8,5 @@ import {NavigationService} from '../../services/navigation.service';
 })
 export class SiteLayoutComponent {
 
-  navMenu = this.navigation.menu;
-
-  constructor(private navigation: NavigationService) {
-  }
-
+  constructor(private navigationService: NavigationService) {}
 }

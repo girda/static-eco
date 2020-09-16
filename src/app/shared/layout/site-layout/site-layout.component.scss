@@ -9,7 +9,7 @@
 
     padding: 20px 0;
 
-    background: transparent url('/assets/img/city.png') left -40px bottom 0 no-repeat;
+    background: transparent url('/assets/img/city.png') center bottom 0 no-repeat;
     border-bottom: 1px solid #076d0b;
   }
 
@@ -37,99 +37,10 @@
   }
 }
 
-.main-nav {
-  padding: 10px 0;
-  z-index: 5;
-
-  & ul {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    text-transform: uppercase;
-
-    & li {
-      padding: 0 5px;
-
-      &:hover > ul {
-        display: flex;
-      }
-
-      & a {
-        display: block;
-        color: #555555;
-        text-decoration: none;
-
-        &:hover {
-          color: #076D0B;
-        }
-      }
-
-      & ul {
-        display: none;
-        position: absolute;
-        width: 300px;
-        flex-flow: column nowrap;
-
-        &:before {
-          content: "";
-          display: block;
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 0 25px 30px 25px;
-          border-color: transparent transparent #ffffff transparent;
-          text-align: right;
-        }
-
-        & li {
-          background-color: white;
-          border-bottom: 1px solid gray;
-          padding: 10px;
-          position: relative;
-
-          & a {
-            color: #076D0B;
-          }
-
-          &:last-child {
-            border-bottom: none;
-          }
-
-          &:hover {
-            background-color: #eef4ef;
-          }
-
-          &:hover > ul {
-            display: flex;
-          }
-
-          ul {
-            display: none;
-            position: absolute;
-            width: 300px;
-            right: 300px;
-            top: 0;
-
-            &:before {
-              content: none;
-            }
-
-            li {
-              &:last-child {
-                border-bottom: none;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 .search {
   display: flex;
   height: 30px;
-  input {
+  & input {
     margin-left: auto;
     width: 270px;
     height: 100%;

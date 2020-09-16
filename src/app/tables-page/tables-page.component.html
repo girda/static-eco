@@ -1,0 +1,37 @@
+<div class="main">
+  <div class="container">
+    <div class="main__in">
+      <div class="main__breadcrumbs">
+        <a class="main__title title">{{title}}</a>
+      </div>
+
+      <div class="center">
+        <div *ngIf="listYears$ | async as listYears; else loaderYears">
+          <ul
+            *ngIf="listYears.length !== 0;"
+            class="button-list"
+          >
+            <li
+              *ngFor="let year of listYears"
+              class="button-list__item"
+            >
+              <a
+                routerLink="{{currentRoute}}/year"
+                class="button-list__btn btn"
+                (click)="getSubstances(year.tr_period)"
+              >
+                {{year.tr_period}}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #loaderYears>
+          <app-loader></app-loader>
+        </ng-template>
+      </div>
+
+  </div>
+</div>
+
+
