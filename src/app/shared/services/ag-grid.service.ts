@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {RestService} from './rest.service';
 import {GridOptions, IDatasource} from 'ag-grid-community';
-
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +9,10 @@ import {GridOptions, IDatasource} from 'ag-grid-community';
 export class AgGridService {
 
   gridOptions: GridOptions;
-
+  localeText = {
+    filterOoo: 'Фильтр...',
+    applyFilter: 'Применить'
+  };
   currentTable: string;
   isReadyTable = false;
   urlMyDataSource: string;
@@ -18,17 +21,10 @@ export class AgGridService {
     getRows: (params: any) => {
       this.rest.post(this.urlMyDataSource, {table: this.currentTable, params})
         .subscribe((entity: any) => {
-            console.log(entity);
             const rowsThisPage = entity.rows;
-            // this.totalRows += entity.rows.length;
-            // console.log(params);
 
-            // if (entity.rows.length !== params.endRow - params.startRow) {
             params.successCallback(rowsThisPage, entity.totalRows);
-            // } else {
-            //   params.successCallback(rowsThisPage);
-            // }
-
+            // console.log(this.gridOptions.api.setFilterModel(null));
             if (entity.description.length < 7 ) {
               this.gridOptions.api.sizeColumnsToFit();
             }
@@ -36,7 +32,6 @@ export class AgGridService {
         );
     }
   };
-
 
   constructor(private rest: RestService) {
     this.gridOptions = {
@@ -46,13 +41,15 @@ export class AgGridService {
         filter: true,
         floatingFilter: true,
         filterParams: {
-          debounceMs: 1500
+          // debounceMs: 1500,
+          buttons: ['apply'],
         }
       },
       rowSelection: 'single',
       tooltipShowDelay: 500,
       rowModelType: 'infinite',
-      datasource: this.myDataSource
+      datasource: this.myDataSource,
+      localeText: this.localeText
     };
   }
 
@@ -87,21 +84,5 @@ export class AgGridService {
       this.isReadyTable = true;
     });
   }
-
-  // loadMore({table, start, limit, url}) {
-  //   return new Promise(resolve => {
-  //     this.rest.post(url, {
-  //       table,
-  //       start,
-  //       limit
-  //     }).subscribe(res => {
-  //       this.rowData = this.rowData.concat(res.data);
-  //
-  //       this.gridOptions.api.setRowData(this.rowData);
-  //       console.log(this.rowData);
-  //       resolve(true);
-  //     });
-  //   });
-  // }
 
 }

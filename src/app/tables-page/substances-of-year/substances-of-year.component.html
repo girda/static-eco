@@ -36,6 +36,16 @@
 
       <div *ngIf="agGridIsReady">
         <div *ngIf="gridService.isReadyTable; else loaderAgGrid">
+
+          <div class="clear-filters">
+            <button
+              (click)="clearFilters()"
+              class="btn"
+            >
+              очистить фильтры
+            </button>
+          </div>
+
           <ag-grid-angular
             style="width: 100%; height: 600px;"
             class="ag-theme-alpine"
@@ -43,30 +53,15 @@
           >
           </ag-grid-angular>
 
-<!--          <div class="center">-->
-<!--            <div-->
-<!--              *ngIf="isLoaded; else loader"-->
-<!--              class="main__btn"-->
-<!--            >-->
-<!--              <button-->
-<!--                (click)="loadMore()"-->
-<!--                [disabled]="!isLoaded"-->
-<!--                class="btn"-->
-<!--              >завантажити ще-->
-<!--              </button>-->
-<!--            </div>-->
 
-<!--            <ng-template #loader>-->
-<!--              <app-loader></app-loader>-->
-<!--            </ng-template>-->
-<!--          </div>-->
+
         </div>
+
         <ng-template #loaderAgGrid>
           <div class="center">
             <app-loader></app-loader>
           </div>
         </ng-template>
-
 
       </div>
     </div>

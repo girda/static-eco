@@ -50,23 +50,6 @@ export class SubstancesOfYearComponent implements OnInit, OnDestroy {
     }
   }
 
-  // loadMore() {
-  //   this.isLoaded = false;
-  //   console.log();
-  //   const optionsForTable = {
-  //     table: this.currentTable,
-  //     start: this.start,
-  //     limit: this.limit,
-  //     url: `${environment.apiUrl}${this.currentRoute}`
-  //   };
-  //
-  //   this.gridService.loadMore(optionsForTable)
-  //     .then(res => {
-  //       this.start += this.step;
-  //       this.isLoaded = true;
-  //     });
-  // }
-
   getTable(tableName) {
     this.agGridIsReady = true;
 
@@ -84,6 +67,10 @@ export class SubstancesOfYearComponent implements OnInit, OnDestroy {
     };
 
     this.gridService.getTable(optionsForTable);
+  }
+
+  clearFilters() {
+    this.gridService.gridOptions.api.setFilterModel(null);
   }
 
   ngOnDestroy(): void {
