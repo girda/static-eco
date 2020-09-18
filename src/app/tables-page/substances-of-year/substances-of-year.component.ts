@@ -25,8 +25,7 @@ export class SubstancesOfYearComponent implements OnInit, OnDestroy {
   currentRoute = location.pathname.substr(0, location.pathname.length - 5); // 5 - pathname: /year
 
   start = 0;
-  limit = 10000;
-  step = this.limit;
+  limit = 100;
 
   constructor(private emissionsService: TableService,
               private router: Router,
@@ -51,25 +50,22 @@ export class SubstancesOfYearComponent implements OnInit, OnDestroy {
     }
   }
 
-  loadMore() {
-    this.isLoaded = false;
-    console.log();
-    const optionsForTable = {
-      table: this.currentTable,
-      start: this.start,
-      limit: this.limit,
-      url: `${environment.apiUrl}${this.currentRoute}`
-    };
-
-    this.gridService.loadMore(optionsForTable)
-      .then(res => {
-        this.start += this.step;
-        this.isLoaded = true;
-      });
-
-
-
-  }
+  // loadMore() {
+  //   this.isLoaded = false;
+  //   console.log();
+  //   const optionsForTable = {
+  //     table: this.currentTable,
+  //     start: this.start,
+  //     limit: this.limit,
+  //     url: `${environment.apiUrl}${this.currentRoute}`
+  //   };
+  //
+  //   this.gridService.loadMore(optionsForTable)
+  //     .then(res => {
+  //       this.start += this.step;
+  //       this.isLoaded = true;
+  //     });
+  // }
 
   getTable(tableName) {
     this.agGridIsReady = true;
@@ -87,11 +83,7 @@ export class SubstancesOfYearComponent implements OnInit, OnDestroy {
       url: `${environment.apiUrl}${this.currentRoute}`
     };
 
-    this.gridService.getTable(optionsForTable)
-      .then(res => {
-        this.start += this.step;
-        this.isLoaded = true;
-      });
+    this.gridService.getTable(optionsForTable);
   }
 
   ngOnDestroy(): void {

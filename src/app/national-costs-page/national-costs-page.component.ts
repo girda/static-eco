@@ -18,8 +18,7 @@ export class NationalCostsPageComponent implements OnInit, OnDestroy {
   currentTable;
 
   start = 0;
-  limit = 1000;
-  step = this.limit;
+  limit = 100;
 
   constructor(public gridService: AgGridService,
               private rest: RestService) {
@@ -29,24 +28,24 @@ export class NationalCostsPageComponent implements OnInit, OnDestroy {
     this.listYears$ = this.rest.get(`${environment.apiUrl}/national-costs`);
   }
 
-  loadMore() {
-    this.isLoaded = false;
-    const optionsForTable = {
-      table: this.currentTable,
-      start: this.start,
-      limit: this.limit,
-      url: `${environment.apiUrl}/national-costs`
-    };
-
-    this.gridService.loadMore(optionsForTable)
-      .then(res => {
-        this.start += this.step;
-        this.isLoaded = true;
-      });
-
-
-
-  }
+  // loadMore() {
+  //   this.isLoaded = false;
+  //   const optionsForTable = {
+  //     table: this.currentTable,
+  //     start: this.start,
+  //     limit: this.limit,
+  //     url: `${environment.apiUrl}/national-costs`
+  //   };
+  //
+  //   this.gridService.loadMore(optionsForTable)
+  //     .then(res => {
+  //       this.start += this.step;
+  //       this.isLoaded = true;
+  //     });
+  //
+  //
+  //
+  // }
 
   getTable(tableName) {
     this.agGridIsReady = true;
@@ -63,11 +62,7 @@ export class NationalCostsPageComponent implements OnInit, OnDestroy {
       url: `${environment.apiUrl}/national-costs`
     };
 
-    this.gridService.getTable(optionsForTable)
-      .then(res => {
-        this.start += this.step;
-        this.isLoaded = true;
-      });
+    this.gridService.getTable(optionsForTable);
   }
   ngOnDestroy(): void {
     this.gridService.isReadyTable = false;

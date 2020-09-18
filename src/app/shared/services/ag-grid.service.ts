@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {RestService} from './rest.service';
-import {GridOptions} from 'ag-grid-community';
-
+import {GridOptions, IDatasource} from 'ag-grid-community';
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +11,48 @@ export class AgGridService {
   gridOptions: GridOptions;
 
   currentTable: string;
-  rowData: any[];
   isReadyTable = false;
+  urlMyDataSource: string;
+
+  myDataSource: IDatasource = {
+    getRows: (params: any) => {
+      this.rest.post(this.urlMyDataSource, {table: this.currentTable, params})
+        .subscribe((entity: any) => {
+            console.log(entity);
+            const rowsThisPage = entity.rows;
+            // this.totalRows += entity.rows.length;
+            // console.log(params);
+
+            // if (entity.rows.length !== params.endRow - params.startRow) {
+            params.successCallback(rowsThisPage, entity.totalRows);
+            // } else {
+            //   params.successCallback(rowsThisPage);
+            // }
+
+            if (entity.description.length < 7 ) {
+              this.gridOptions.api.sizeColumnsToFit();
+            }
+          }
+        );
+    }
+  };
+
 
   constructor(private rest: RestService) {
     this.gridOptions = {
       defaultColDef: {
         width: 200,
-        sortable: true,
         floatingFilterComponentParams: {suppressFilterButton: true},
         filter: true,
-        floatingFilter: true
+        floatingFilter: true,
+        filterParams: {
+          debounceMs: 1500
+        }
       },
-      // context: {componentParent: this},
       rowSelection: 'single',
       tooltipShowDelay: 500,
-      // rowModelType: 'serverSide'
-    };
-  }
-  init(data: any[]) {
-    this.gridOptions.onGridReady = () => {
-      this.gridOptions.api.setRowData(data);
-      // this.gridOptions.api.sizeColumnsToFit();
+      rowModelType: 'infinite',
+      datasource: this.myDataSource
     };
   }
 
@@ -47,7 +66,7 @@ export class AgGridService {
         headerName: names.description,
         field: names.origin,
         headerTooltip: names.description,
-        cellRenderer: tooltipRenderer
+        // cellRenderer: tooltipRenderer
       });
     });
     return columnDefs;
@@ -56,42 +75,33 @@ export class AgGridService {
   getTable({table, start, limit, url}) {
 
     this.isReadyTable = false;
-    return new Promise(resolve => {
-      this.currentTable = table;
+    this.currentTable = table;
+    this.urlMyDataSource = url;
 
-      this.rest.post(url, {
-        table,
-        start,
-        limit
-      }).subscribe(res => {
-        this.gridOptions.columnDefs = this.createColumnDefs(res.description);
-        this.rowData = res.data;
-
-        this.isReadyTable = true;
-        this.init(this.rowData);
-        console.log(this.rowData);
-        resolve(true);
-      });
+    this.rest.post(url, {
+      table,
+      start,
+      limit
+    }).subscribe(res => {
+      this.gridOptions.columnDefs = this.createColumnDefs(res.description);
+      this.isReadyTable = true;
     });
   }
 
-  loadMore({table, start, limit, url}) {
-    return new Promise(resolve => {
-      this.rest.post(url, {
-        table,
-        start,
-        limit
-      }).subscribe(res => {
-        this.rowData = this.rowData.concat(res.data);
+  // loadMore({table, start, limit, url}) {
+  //   return new Promise(resolve => {
+  //     this.rest.post(url, {
+  //       table,
+  //       start,
+  //       limit
+  //     }).subscribe(res => {
+  //       this.rowData = this.rowData.concat(res.data);
+  //
+  //       this.gridOptions.api.setRowData(this.rowData);
+  //       console.log(this.rowData);
+  //       resolve(true);
+  //     });
+  //   });
+  // }
 
-        this.gridOptions.api.setRowData(this.rowData);
-        console.log(this.rowData);
-        resolve(true);
-      });
-    });
-  }
-
-  destroy() {
-
-  }
 }
