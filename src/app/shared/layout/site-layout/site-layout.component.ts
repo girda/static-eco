@@ -7,6 +7,6 @@ import {NavigationService} from '../../services/navigation.service';
   styleUrls: ['./site-layout.component.scss']
 })
 export class SiteLayoutComponent {
-
-  constructor(private navigationService: NavigationService) {}
+  menu = this.navigationService.menu;
+  constructor(public navigationService: NavigationService) {}
 }

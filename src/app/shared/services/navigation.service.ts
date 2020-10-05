@@ -127,4 +127,16 @@ export class NavigationService {
       ]
     },
   ];
+
+  createMenu() {
+    const createHtml = (data) => `
+      <ul >${data.map((item, i) => `
+        <li>
+          <a routerLink="/${item.route}">${item.title}</a>
+          ${item.children ? createHtml(item.children) : ''}
+        </li>`).join('')}
+      </ul>`;
+
+    return createHtml(this.menu);
+  }
 }

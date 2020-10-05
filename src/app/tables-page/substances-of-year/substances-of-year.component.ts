@@ -30,7 +30,7 @@ export class SubstancesOfYearComponent implements OnInit, OnDestroy {
   constructor(private emissionsService: TableService,
               private router: Router,
               private rest: RestService,
-              private gridService: AgGridService) { }
+              public gridService: AgGridService) { }
 
   ngOnInit() {
     this.currentYear = this.emissionsService.currentYear;
