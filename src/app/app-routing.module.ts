@@ -15,6 +15,7 @@ import {TablesPageComponent} from './tables-page/tables-page.component';
 import {NationalCostsPageComponent} from './national-costs-page/national-costs-page.component';
 import {SubstancesOfYearComponent} from './tables-page/substances-of-year/substances-of-year.component';
 import {LoginPageComponent} from './login-page/login-page.component';
+import {DataBaseComponent} from "./data-base/data-base.component";
 
 const routers: Routes = [
   {
@@ -37,6 +38,7 @@ const routers: Routes = [
       {path: 'national-waste', component: TablesPageComponent},
       {path: 'national-waste/year', component: SubstancesOfYearComponent},
       {path: 'national-costs', component: NationalCostsPageComponent},
+      {path: 'data-base', component: DataBaseComponent},
     ]
   }
 ];

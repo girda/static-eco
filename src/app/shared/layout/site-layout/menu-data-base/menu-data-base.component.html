@@ -1,0 +1,32 @@
+<div class="menu-data-base">
+
+  <div class="menu-data-base__row">
+    <div class="menu-data-base__col">
+        <div class="menu-data-base__title menu-data-base__title--large">НАЦІОНАЛЬНА БАЗА ДАНИХ</div>
+
+        <ng-container *ngFor="let list of menu">
+          <app-list-item-icon [list]="list.list"
+                              [title]="list.title"></app-list-item-icon>
+        </ng-container>
+
+    </div>
+    <div class="menu-data-base__col menu-data-base__col--space-between">
+      <div class="menu-data-base__col-wrap">
+        <div class="menu-data-base__title">НАЦІОНАЛЬНА БАЗА ДАНИХ</div>
+      </div>
+
+      <div class="menu-data-base__col-wrap">
+        <div class="menu-data-base__title">ЗМІНА КЛІМАТУ</div>
+      </div>
+
+      <div class="menu-data-base__col-wrap">
+        <div class="menu-data-base__title">ЕКОЛОГІЧНІ РЕЄСТРИ</div>
+      </div>
+
+      <div class="menu-data-base__col-wrap">
+        <div class="menu-data-base__title">ПРОФІЛІ ЗАБРУДНЮВАЧІВ</div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.list {
+  margin-left: 10px;
+  text-align: left;
+
+  &__item {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    text-transform: initial;
+    font-size: 18px;
+
+    img {
+      margin-right: 5px;
+    }
+
+    a {
+      color: #555555;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.list-title {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: left;
+  text-transform: initial;
+  color: #0ACC11;
+  margin-bottom: 5px;
+  white-space: nowrap;
+}

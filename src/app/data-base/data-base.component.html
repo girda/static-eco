@@ -1,0 +1,116 @@
+<div class="main">
+  <div class="container">
+    <app-breadcrumbs></app-breadcrumbs>
+
+    <div class="main__content">
+
+
+      <div class="main__in">
+
+        <div class="main__left">
+          <app-accordion isShow="true" icon="ua.png" title="НАЦІОНАЛЬНА БАЗА ДАНИХ"></app-accordion>
+          <app-accordion title="МІЖНАРОДНА БАЗА ДАНИХ" icon="planet.png"></app-accordion>
+          <app-accordion title="ЕКОЛОГІЧНІ РЕЄСТРИ" icon="eco.png"></app-accordion>
+          <app-accordion title="ЗМІНА КЛІМАТУ" icon="climat.png"></app-accordion>
+          <app-accordion title="ПРОФІЛІ ЗАБРУДНЮВАЧІВ" icon="factory.png"></app-accordion>
+        </div>
+
+        <div class="main__right">
+
+          <div class="range">
+            <div class="range__title">Оберіть діапазон:</div>
+            <div class="range__input">
+              <label for="from">Від</label>
+              <input type="text" id="from">
+            </div>
+            <div class="range__input">
+              <label for="to">До</label>
+              <input type="text" id="to">
+            </div>
+          </div>
+
+          <div class="region">
+            <div class="region__title">Регіони:</div>
+
+            <div class="region__checkboxes">
+              <div class="region__checkbox" *ngFor="let region of regions">
+                <input type="checkbox" id="{{region.id}}">
+                <label for="{{region.id}}">{{region.name}}</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="emissions">
+            <div class="emissions__radio">
+              <input type="radio" id="Викиди" name="emissions">
+              <label for="Викиди">Викиди</label>
+            </div>
+
+            <div class="emissions__radio">
+              <input type="radio" id="Відходи" name="emissions">
+              <label for="Відходи">Відходи</label>
+            </div>
+
+            <div class="emissions__radio">
+              <input type="radio" id="Витрати" name="emissions">
+              <label for="Витрати">Витрати</label>
+            </div>
+          </div>
+
+          <div class="emissions">
+            <div class="emissions__radio">
+              <input type="radio" id="Викиди від пересувних джерел" name="emissions2">
+              <label for="Викиди від пересувних джерел">Викиди від пересувних джерел</label>
+            </div>
+
+            <div class="emissions__radio">
+              <input type="radio" id="Викиди від стаціонарних джерел" name="emissions2">
+              <label for="Викиди від стаціонарних джерел">Викиди від стаціонарних джерел</label>
+            </div>
+
+            <div class="emissions__radio">
+              <input type="radio" id="Речовини за КВЕД" name="emissions2">
+              <label for="Речовини за КВЕД">Речовини за КВЕД</label>
+            </div>
+          </div>
+
+          <div class="types">
+            <div class="types__title">Види економічної діяльності:</div>
+
+            <div class="types__checkboxes">
+              <div class="types__checkbox">
+                <input type="checkbox" id="Всі види економічної діяльності">
+                <label for="Всі види економічної діяльності">Всі види економічної діяльності</label>
+              </div>
+
+              <div class="types__checkbox">
+                <input type="checkbox" id="Сільське господарство, мисливство, лісове господарство">
+                <label for="Сільське господарство, мисливство, лісове господарство">Сільське господарство, мисливство, лісове господарство</label>
+              </div>
+
+              <div class="types__checkbox">
+                <input type="checkbox" id="Сільське господарство, мисливство та пов'язані з ними послуги">
+                <label for="Сільське господарство, мисливство та пов'язані з ними послуги">Сільське господарство, мисливство та пов'язані з ними послуги</label>
+              </div>
+
+              <div class="types__checkbox">
+                <input type="checkbox" id="Рослинництво">
+                <label for="Рослинництво">Рослинництво</label>
+              </div>
+
+              <div class="types__checkbox">
+                <input type="checkbox" id="Вирощування зернових та технічних культур">
+                <label for="Вирощування зернових та технічних культур">Вирощування зернових та технічних культур</label>
+              </div>
+
+              <div class="types__checkbox">
+                <input type="checkbox" id="Овочівництво, декоративне садівництво та вирощування продукції розсадників">
+                <label for="Овочівництво, декоративне садівництво та вирощування продукції розсадників">Овочівництво, декоративне садівництво та вирощування продукції розсадників</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

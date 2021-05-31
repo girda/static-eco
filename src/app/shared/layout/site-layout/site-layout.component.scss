@@ -2,21 +2,52 @@
 
 .header {
   margin-bottom: 40px;
+
+  &__top {
+    background-color: #eef0ee;
+
+    &-in {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+  }
+
+  &__auth {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 10px;
+    }
+
+    a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: $black;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   &__in {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     padding: 20px 0;
-
-    background: transparent url('/assets/img/city.png') center bottom 0 no-repeat;
+    background: transparent url('/assets/img/head-bg.png') center bottom 0 no-repeat;
     border-bottom: 1px solid #076d0b;
+
   }
 
   .logo  {
     display: flex;
     img {
       width: 200px;
+      object-fit: contain;
+      margin-bottom: -50px;
     }
   }
 
@@ -123,8 +154,9 @@
 
 }
 
-nav {
+nav:not(.footer__nav) {
   position: relative;
-  padding: 10px 0;
+  padding: 5px;
   z-index: 5;
+  background-color: #076D0B;
 }

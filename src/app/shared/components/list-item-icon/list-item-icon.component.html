@@ -1,0 +1,7 @@
+<h4 class="list-title" *ngIf="title">{{title}}</h4>
+<ul class="list" *ngIf="list">
+  <li class="list__item" *ngFor="let item of list">
+    <img src="assets/img/{{item.icon}}" alt="icon">
+    <a href="">{{item.name}}</a>
+  </li>
+</ul>

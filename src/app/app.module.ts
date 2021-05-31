@@ -23,6 +23,11 @@ import { NationalCostsPageComponent } from './national-costs-page/national-costs
 import { SubstancesOfYearComponent } from './tables-page/substances-of-year/substances-of-year.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { DataBaseComponent } from './data-base/data-base.component';
+import { BreadcrumbsComponent } from './shared/components/breadcrumbs/breadcrumbs.component';
+import { MenuDataBaseComponent } from './shared/layout/site-layout/menu-data-base/menu-data-base.component';
+import { ListItemIconComponent } from './shared/components/list-item-icon/list-item-icon.component';
+import { AccordionComponent } from './shared/components/accordion/accordion.component';
 
 
 @NgModule({
@@ -44,6 +49,11 @@ import {ReactiveFormsModule} from '@angular/forms';
     NationalCostsPageComponent,
     SubstancesOfYearComponent,
     LoginPageComponent,
+    DataBaseComponent,
+    BreadcrumbsComponent,
+    MenuDataBaseComponent,
+    ListItemIconComponent,
+    AccordionComponent,
   ],
   imports: [
     BrowserModule,

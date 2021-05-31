@@ -1,0 +1,36 @@
+.menu-data-base {
+  width: 100%;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__title {
+    padding: 10px 40px;
+    background-color: #0ACC11;
+    color: white;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  &__col {
+    width: 48%;
+    display: flex;
+    flex-wrap: wrap;
+
+    &--space-between {
+      justify-content: space-between;
+    }
+
+    app-list-item-icon {
+      width: 33%;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__col-wrap {
+    width: 45%;
+  }
+}

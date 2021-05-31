@@ -4,6 +4,11 @@
     <ng-container *ngIf="item.children">
       <app-menu [menu]="item.children"></app-menu>
     </ng-container>
+    <ng-container *ngIf="item.component">
+      <div class="menu-component">
+        <app-menu-data-base></app-menu-data-base>
+      </div>
+    </ng-container>
   </li>
 </ul>
 
