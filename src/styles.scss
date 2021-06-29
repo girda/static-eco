@@ -11,6 +11,20 @@ body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   //background-color: #eef4ef;
   line-height: 1.4;
+
+  &::after {
+    content: "";
+    background: url('assets/img/bg.jpg');
+    background-size: cover;
+    opacity: 0.2;
+    transform: rotate(180deg);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+  }
 }
 
 main {
@@ -60,7 +74,7 @@ main {
   margin-bottom: 40px;
   font-size: 34px;
   font-weight: 500;
-  color: $titleColor;
+  color: #34947C;
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;

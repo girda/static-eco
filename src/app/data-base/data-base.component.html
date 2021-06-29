@@ -29,31 +29,21 @@
             </div>
           </div>
 
-          <div class="region">
+          <div class="region" *ngIf="regions$ | async as regions">
             <div class="region__title">Регіони:</div>
 
             <div class="region__checkboxes">
               <div class="region__checkbox" *ngFor="let region of regions">
                 <input type="checkbox" id="{{region.id}}">
-                <label for="{{region.id}}">{{region.name}}</label>
+                <label for="{{region.id}}">{{region.name_ua}}</label>
               </div>
             </div>
           </div>
 
-          <div class="emissions">
-            <div class="emissions__radio">
-              <input type="radio" id="Викиди" name="emissions">
-              <label for="Викиди">Викиди</label>
-            </div>
-
-            <div class="emissions__radio">
-              <input type="radio" id="Відходи" name="emissions">
-              <label for="Відходи">Відходи</label>
-            </div>
-
-            <div class="emissions__radio">
-              <input type="radio" id="Витрати" name="emissions">
-              <label for="Витрати">Витрати</label>
+          <div class="emissions" *ngIf="subjects$ | async as subjects">
+            <div class="emissions__radio" *ngFor="let subject of subjects">
+              <input type="radio" id="{{subject.s_name_ua}}" name="emissions" value="{{subject.s_id}}">
+              <label for="{{subject.s_name_ua}}">{{subject.s_name_ua}}</label>
             </div>
           </div>
 

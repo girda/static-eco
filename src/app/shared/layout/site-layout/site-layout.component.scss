@@ -4,7 +4,7 @@
   margin-bottom: 40px;
 
   &__top {
-    background-color: #eef0ee;
+    background-color: rgba(190, 231, 227, 0.8);
 
     &-in {
       display: flex;
@@ -59,7 +59,7 @@
     }
 
     h1 {
-      color: #076d0b;
+      color: #34947C;
     }
 
     h2 {
@@ -111,7 +111,7 @@
       left: 0;
       width: 75px;
       height: 4px;
-      background-color: #0acc11;
+      background-color: #48CFAD;
     }
   }
 
@@ -158,5 +158,5 @@ nav:not(.footer__nav) {
   position: relative;
   padding: 5px;
   z-index: 5;
-  background-color: #076D0B;
+  background-color: #34947C;
 }
