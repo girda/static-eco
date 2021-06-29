@@ -13,21 +13,20 @@ export class AgGridService {
     filterOoo: 'Фильтр...',
     applyFilter: 'Применить'
   };
-  currentTable: string;
+  queryBody: any;
   isReadyTable = false;
   urlMyDataSource: string;
 
   myDataSource: IDatasource = {
     getRows: (params: any) => {
-      this.rest.post(this.urlMyDataSource, {table: this.currentTable, params})
+      this.rest.post(this.urlMyDataSource, this.queryBody)
         .subscribe((entity: any) => {
-            const rowsThisPage = entity.rows;
-
-            params.successCallback(rowsThisPage, entity.totalRows);
+            const rowsThisPage = entity[0];
+            params.successCallback(rowsThisPage, entity[0].length);
             // console.log(this.gridOptions.api.setFilterModel(null));
-            if (entity.description.length < 7 ) {
-              this.gridOptions.api.sizeColumnsToFit();
-            }
+            // if (entity.description.length < 7 ) {
+            //   this.gridOptions.api.sizeColumnsToFit();
+            // }
           }
         );
     }
@@ -58,29 +57,26 @@ export class AgGridService {
       return `<span title="${params.value}">${params.value}</span>`;
     };
     const columnDefs = [];
-    data.forEach(names => {
+    data[1].forEach(names => {
       columnDefs.push({
-        headerName: names.description,
-        field: names.origin,
-        headerTooltip: names.description,
-        // cellRenderer: tooltipRenderer
+        headerName: names.info,
+        field: names.code,
+        headerTooltip: names.info,
+        cellRenderer: tooltipRenderer
       });
     });
     return columnDefs;
   }
 
-  getTable({table, start, limit, url}) {
+  getTable(url, queryBody) {
 
     this.isReadyTable = false;
-    this.currentTable = table;
+    this.queryBody = queryBody;
     this.urlMyDataSource = url;
 
-    this.rest.post(url, {
-      table,
-      start,
-      limit
-    }).subscribe(res => {
-      this.gridOptions.columnDefs = this.createColumnDefs(res.description);
+    this.rest.post(url, queryBody).subscribe(res => {
+      console.log(res);
+      this.gridOptions.columnDefs = this.createColumnDefs(res);
       this.isReadyTable = true;
     });
   }

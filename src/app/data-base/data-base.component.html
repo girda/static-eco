@@ -1,6 +1,6 @@
 <div class="main">
   <div class="container">
-    <app-breadcrumbs></app-breadcrumbs>
+<!--    <app-breadcrumbs></app-breadcrumbs>-->
 
     <div class="main__content">
 
@@ -15,17 +15,20 @@
           <app-accordion title="ПРОФІЛІ ЗАБРУДНЮВАЧІВ" icon="factory.png"></app-accordion>
         </div>
 
-        <div class="main__right">
+        <form class="main__right" [formGroup]="form">
 
-          <div class="range">
-            <div class="range__title">Оберіть діапазон:</div>
-            <div class="range__input">
-              <label for="from">Від</label>
-              <input type="text" id="from">
-            </div>
-            <div class="range__input">
-              <label for="to">До</label>
-              <input type="text" id="to">
+          <div class="period" *ngIf="periods$ | async as periods">
+            <div class="period__title">Оберіть рік або роки:</div>
+
+            <div class="period__checkboxes">
+              <div class="period__checkbox" *ngFor="let period of periods">
+                <input type="checkbox"
+                       id="{{period.id}}"
+                       value="{{period.id}}"
+                       (change)="onCheckChange($event, 'periods')"
+                >
+                <label for="{{period.id}}">{{period.code}}</label>
+              </div>
             </div>
           </div>
 
@@ -34,7 +37,11 @@
 
             <div class="region__checkboxes">
               <div class="region__checkbox" *ngFor="let region of regions">
-                <input type="checkbox" id="{{region.id}}">
+                <input type="checkbox"
+                       id="{{region.id}}"
+                       value="{{region.code}}"
+                       (change)="onCheckChange($event, 'regions')"
+                >
                 <label for="{{region.id}}">{{region.name_ua}}</label>
               </div>
             </div>
@@ -42,65 +49,107 @@
 
           <div class="emissions" *ngIf="subjects$ | async as subjects">
             <div class="emissions__radio" *ngFor="let subject of subjects">
-              <input type="radio" id="{{subject.s_name_ua}}" name="emissions" value="{{subject.s_id}}">
+              <input type="radio"
+                     formControlName="classifier"
+                     id="{{subject.s_name_ua}}"
+                     name="classifier"
+                     value="{{subject.s_id}}">
               <label for="{{subject.s_name_ua}}">{{subject.s_name_ua}}</label>
             </div>
           </div>
 
-          <div class="emissions">
-            <div class="emissions__radio">
-              <input type="radio" id="Викиди від пересувних джерел" name="emissions2">
-              <label for="Викиди від пересувних джерел">Викиди від пересувних джерел</label>
-            </div>
+<!--          <div class="emissions">-->
+<!--            <div class="emissions__radio">-->
+<!--              <input type="radio" id="Викиди від пересувних джерел" name="emissions2">-->
+<!--              <label for="Викиди від пересувних джерел">Викиди від пересувних джерел</label>-->
+<!--            </div>-->
 
-            <div class="emissions__radio">
-              <input type="radio" id="Викиди від стаціонарних джерел" name="emissions2">
-              <label for="Викиди від стаціонарних джерел">Викиди від стаціонарних джерел</label>
-            </div>
+<!--            <div class="emissions__radio">-->
+<!--              <input type="radio" id="Викиди від стаціонарних джерел" name="emissions2">-->
+<!--              <label for="Викиди від стаціонарних джерел">Викиди від стаціонарних джерел</label>-->
+<!--            </div>-->
 
-            <div class="emissions__radio">
-              <input type="radio" id="Речовини за КВЕД" name="emissions2">
-              <label for="Речовини за КВЕД">Речовини за КВЕД</label>
-            </div>
-          </div>
+<!--            <div class="emissions__radio">-->
+<!--              <input type="radio" id="Речовини за КВЕД" name="emissions2">-->
+<!--              <label for="Речовини за КВЕД">Речовини за КВЕД</label>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="types">
-            <div class="types__title">Види економічної діяльності:</div>
+<!--          <div class="types">-->
+<!--            <div class="types__title">Види економічної діяльності:</div>-->
 
-            <div class="types__checkboxes">
-              <div class="types__checkbox">
-                <input type="checkbox" id="Всі види економічної діяльності">
-                <label for="Всі види економічної діяльності">Всі види економічної діяльності</label>
-              </div>
+<!--            <div class="types__checkboxes">-->
+<!--              <div class="types__checkbox">-->
+<!--                <input type="checkbox" id="Всі види економічної діяльності">-->
+<!--                <label for="Всі види економічної діяльності">Всі види економічної діяльності</label>-->
+<!--              </div>-->
 
-              <div class="types__checkbox">
-                <input type="checkbox" id="Сільське господарство, мисливство, лісове господарство">
-                <label for="Сільське господарство, мисливство, лісове господарство">Сільське господарство, мисливство, лісове господарство</label>
-              </div>
+<!--              <div class="types__checkbox">-->
+<!--                <input type="checkbox" id="Сільське господарство, мисливство, лісове господарство">-->
+<!--                <label for="Сільське господарство, мисливство, лісове господарство">Сільське господарство, мисливство, лісове господарство</label>-->
+<!--              </div>-->
 
-              <div class="types__checkbox">
-                <input type="checkbox" id="Сільське господарство, мисливство та пов'язані з ними послуги">
-                <label for="Сільське господарство, мисливство та пов'язані з ними послуги">Сільське господарство, мисливство та пов'язані з ними послуги</label>
-              </div>
+<!--              <div class="types__checkbox">-->
+<!--                <input type="checkbox" id="Сільське господарство, мисливство та пов'язані з ними послуги">-->
+<!--                <label for="Сільське господарство, мисливство та пов'язані з ними послуги">Сільське господарство, мисливство та пов'язані з ними послуги</label>-->
+<!--              </div>-->
 
-              <div class="types__checkbox">
-                <input type="checkbox" id="Рослинництво">
-                <label for="Рослинництво">Рослинництво</label>
-              </div>
+<!--              <div class="types__checkbox">-->
+<!--                <input type="checkbox" id="Рослинництво">-->
+<!--                <label for="Рослинництво">Рослинництво</label>-->
+<!--              </div>-->
 
-              <div class="types__checkbox">
-                <input type="checkbox" id="Вирощування зернових та технічних культур">
-                <label for="Вирощування зернових та технічних культур">Вирощування зернових та технічних культур</label>
-              </div>
+<!--              <div class="types__checkbox">-->
+<!--                <input type="checkbox" id="Вирощування зернових та технічних культур">-->
+<!--                <label for="Вирощування зернових та технічних культур">Вирощування зернових та технічних культур</label>-->
+<!--              </div>-->
 
-              <div class="types__checkbox">
-                <input type="checkbox" id="Овочівництво, декоративне садівництво та вирощування продукції розсадників">
-                <label for="Овочівництво, декоративне садівництво та вирощування продукції розсадників">Овочівництво, декоративне садівництво та вирощування продукції розсадників</label>
-              </div>
-            </div>
-          </div>
+<!--              <div class="types__checkbox">-->
+<!--                <input type="checkbox" id="Овочівництво, декоративне садівництво та вирощування продукції розсадників">-->
+<!--                <label for="Овочівництво, декоративне садівництво та вирощування продукції розсадників">Овочівництво, декоративне садівництво та вирощування продукції розсадників</label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <button type="submit"
+                  class=""
+                  (click)="onSubmit($event)"
+          >Застосувати</button>
+        </form>
+      </div>
+      <div *ngIf="agGridIsReady">
+        <div *ngIf="gridService.isReadyTable; else loaderAgGrid">
+          <ag-grid-angular
+            style="width: 100%; height: 600px;"
+            class="ag-theme-alpine"
+            [gridOptions]="gridService.gridOptions"
+          >
+          </ag-grid-angular>
+
+          <!--          <div class="center">-->
+          <!--            <div-->
+          <!--              *ngIf="isLoaded; else loader"-->
+          <!--              class="main__btn"-->
+          <!--            >-->
+          <!--              <button-->
+          <!--                (click)="loadMore()"-->
+          <!--                [disabled]="!isLoaded"-->
+          <!--                class="btn"-->
+          <!--              >завантажити ще-->
+          <!--              </button>-->
+          <!--            </div>-->
+
+          <!--            <ng-template #loader>-->
+          <!--              <app-loader></app-loader>-->
+          <!--            </ng-template>-->
+          <!--          </div>-->
         </div>
       </div>
+      <ng-template #loaderAgGrid>
+        <div class="center">
+          <app-loader></app-loader>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

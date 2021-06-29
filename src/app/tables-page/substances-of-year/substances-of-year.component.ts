@@ -66,7 +66,7 @@ export class SubstancesOfYearComponent implements OnInit, OnDestroy {
       url: `${environment.apiUrl}${this.currentRoute}`
     };
 
-    this.gridService.getTable(optionsForTable);
+    // this.gridService.getTable(optionsForTable);
   }
 
   clearFilters() {

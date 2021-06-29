@@ -62,7 +62,7 @@ export class NationalCostsPageComponent implements OnInit, OnDestroy {
       url: `${environment.apiUrl}/national-costs`
     };
 
-    this.gridService.getTable(optionsForTable);
+    // this.gridService.getTable(optionsForTable);
   }
   ngOnDestroy(): void {
     this.gridService.isReadyTable = false;
